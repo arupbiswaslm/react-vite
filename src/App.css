@@ -34,9 +34,48 @@
 }
 
 .card {
-  padding: 2em;
+  padding: 1em;
+  border: 1px dashed;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+nav {
+  background-color: #282c34; /* Example background color */
+  padding: 1rem; /* Add padding around the navbar */
+}
+
+ul {
+  display: flex; /* Align list items horizontally */
+  justify-content: space-around; /* Space items evenly */
+  list-style: none; /* Remove default list styling */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+li {
+  color: white; /* Text color */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+li:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Make the image circular */
+  margin-right: 0.5rem;
+}
+
+.username {
+  font-size: 1rem;
+  color: white;
 }
