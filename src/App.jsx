@@ -1,19 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { CartProvider, useCart } from "./context/CartContext";
+import Home from "./pages/Home";
+import CartPage from "./pages/CartPage";
+import ProductDetails from "./pages/ProductDetails";
 
-import ParentComponent from './components/ParentComponent.jsx'
+import { ShoppingCart } from "lucide-react"; // Icon
+
+// Small Navbar Component
+const Navbar = () => {
+  const { cart } = useCart();
+  return (
+    <nav
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "1rem",
+      }}
+    >
+      <Link to="/">My Shop</Link>
+      <Link to="/cart">
+        <ShoppingCart /> <span>({cart.length})</span>
+      </Link>
+    </nav>
+  );
+};
 
 function App() {
-
   return (
-    <>
-      <div className="card">
-        <ParentComponent />
-      </div>
-    </>
-  )
+    <CartProvider>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
+  );
 }
 
-export default App
+export default App;
